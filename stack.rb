@@ -1,5 +1,6 @@
 class Stack
 
+
   def initialize
     @data = []
     @top_index = 0
@@ -19,8 +20,9 @@ class Stack
 
     result = @data[@top_index-1]
 
-    @data[@top_index] = nil
+    @data[@top_index-1] = nil
     @top_index -=1
+    @data.compact!
     return result
   end
 
@@ -32,6 +34,17 @@ class Stack
     return true if @top_index == 0
     return false
   end
+
+  def display
+    i = 0
+    while(i <= @top_index)
+      print @data[i]
+      i+=1
+    end
+    puts
+  end
+
+
 
 end
 
@@ -55,15 +68,18 @@ end
   # puts s.peek
   # puts s.empty?
 
-puts "stacking up calvin"
+# puts "stacking up calvin"
 s = Stack.new
+
 s.push('c')
 s.push('a')
 s.push('l')
 s.push('v')
 s.push('i')
 s.push('n')
+puts s.pop
+puts s.pop
 
-while !s.empty?
-  puts s.pop()
-end
+puts s.pop
+
+s.display

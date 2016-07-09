@@ -14,9 +14,13 @@ class Queue
 
   def dequeue
     return if empty?
+
     result = @data[0]
-    @data.each_with_index do |item, i|
-      @data[i] = @data[i+1]
+    counter = 0
+
+    while(!@data[counter].nil?)
+      @data[counter] = @data[counter+1]
+      counter +=1
     end
     @end_index-=1
 
